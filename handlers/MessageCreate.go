@@ -12,6 +12,10 @@ import (
 
 func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
+	if m.Author.ID == s.State.User.ID {
+		return
+	}
+
 	lowerContent := strings.ToLower(m.Content)
 
 	if strings.Contains(lowerContent, "benson") {
